@@ -1,3 +1,9 @@
+using GemMangement.DbContexts;
+using GymMangement.DAL.Repositories.Classes;
+using GymMangement.DAL.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 namespace GemMangement
 {
     public class Program
@@ -8,6 +14,11 @@ namespace GemMangement
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+            builder.Services.AddDbContext<GymDbContext>(Options =>
+            {
+                Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             var app = builder.Build();
 

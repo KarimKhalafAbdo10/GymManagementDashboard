@@ -1,4 +1,5 @@
 ﻿using GemMangement.DbContexts;
+using GymMangement.DAL.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -7,20 +8,20 @@ namespace GymMangement.Controllers
 {
     public class PlansController : Controller
     {
-        private readonly GymDbContext dbContext;
-        public PlansController()
+        private readonly IPlanRepository planRepository;
+        public PlansController(IPlanRepository planRepository)
         {
-            dbContext = new GymDbContext();
+            this.planRepository = planRepository;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(CancellationToken ct)
         {
-            var plans = await dbContext.Plans.ToListAsync();
+            var plans = await planRepository.GetAllAsync(ct:ct);
             return View(plans);
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id ,CancellationToken ct)
         {
-            var plan = await dbContext.Plans.FindAsync(id);
+            var plan = await planRepository.GetByIdAsync(id,ct);
 
             if (plan is null)
             {
