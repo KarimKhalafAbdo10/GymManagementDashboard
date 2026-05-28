@@ -1,26 +1,44 @@
+<<<<<<< HEAD
+﻿using GymMangement.DAL.Data.Models;
+=======
 ﻿using GemMangement.DbContexts;
+>>>>>>> c3cde5e44ef18a437e8f2711eed49a96e6f21de9
+using GymMangement.DAL.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 
 namespace GymMangement.Controllers
 {
     public class PlansController : Controller
     {
-        private readonly GymDbContext dbContext;
-        public PlansController()
+<<<<<<< HEAD
+        private readonly IGenericRepository<Plan> _planRepository;
+        public PlansController(IGenericRepository<Plan> planRepository)
         {
-            dbContext = new GymDbContext();
+            this._planRepository = planRepository;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(CancellationToken ct)
         {
-            var plans = await dbContext.Plans.ToListAsync();
+            var plans = await _planRepository.GetAllAsync(ct:ct);
+=======
+        private readonly IPlanRepository planRepository;
+        public PlansController(IPlanRepository planRepository)
+        {
+            this.planRepository = planRepository;
+        }
+        public async Task<IActionResult> Index(CancellationToken ct)
+        {
+            var plans = await planRepository.GetAllAsync(ct:ct);
+>>>>>>> c3cde5e44ef18a437e8f2711eed49a96e6f21de9
             return View(plans);
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id ,CancellationToken ct)
         {
-            var plan = await dbContext.Plans.FindAsync(id);
+<<<<<<< HEAD
+            var plan = await _planRepository.GetByIdAsync(id,ct);
+=======
+            var plan = await planRepository.GetByIdAsync(id,ct);
+>>>>>>> c3cde5e44ef18a437e8f2711eed49a96e6f21de9
 
             if (plan is null)
             {
