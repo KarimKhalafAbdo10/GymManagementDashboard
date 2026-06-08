@@ -1,10 +1,10 @@
-<<<<<<< HEAD
+
 using GymMangement.BLL.Services.Classes;
 using GymMangement.BLL.Services.Interfaces;
 using GymMangement.DAL.Data.DbContexts;
-=======
-using GemMangement.DbContexts;
->>>>>>> c3cde5e44ef18a437e8f2711eed49a96e6f21de9
+
+
+
 using GymMangement.DAL.Repositories.Classes;
 using GymMangement.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -18,14 +18,12 @@ namespace GemMangement
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
-<<<<<<< HEAD
+
             builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
             builder.Services.AddScoped<IMemberService, MemberService>();
-=======
-            builder.Services.AddScoped<IPlanRepository, PlanRepository>();
->>>>>>> c3cde5e44ef18a437e8f2711eed49a96e6f21de9
+
+
             builder.Services.AddDbContext<GymDbContext>(Options =>
             {
                 Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
