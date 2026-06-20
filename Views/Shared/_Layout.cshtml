@@ -32,25 +32,25 @@
                     <ul class="navbar-nav m-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
                         <li class="nav-item">
                         <li class="nav-item">
-                            <a class="nav-link active px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-action="Index" asp-controller="Homw">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Members</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Trainers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Sessions</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Plans</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Memberships</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Sessions Schedule</a>
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page"  asp-action="Index" asp-controller="Members">Members</a>
+                        </li>                                                                      
+                        <li class="nav-item">                                                       
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-action="Index" asp-controller="Trainer">Trainers</a>
+                        </li>                                                                      
+                        <li class="nav-item">                                                       
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-action="Index" asp-controller="Sessions">Sessions</a>
+                        </li>                                                                     
+                        <li class="nav-item">                                                      
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-action="Index" asp-controller="Plans">Plans</a>
+                        </li>                                                                       
+                        <li class="nav-item">                                                       
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-action="Index" asp-controller="Memberships">Memberships</a>
+                        </li>                                                                      
+                        <li class="nav-item">                                                    
+                            <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" asp-action="Index" asp-controller="Sessions Schedule">Sessions Schedule</a>
                         </li>
                         <li class="nav-item">
                             <form asp-action="Logout" asp-controller="Account" method="post" class="d-inline">

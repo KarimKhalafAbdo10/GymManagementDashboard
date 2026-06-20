@@ -88,9 +88,9 @@ namespace GymMangement.PL.Controllers
 
         #region EditMember
         [HttpGet]
-        public async Task<IActionResult> EditMember(int memberId,CancellationToken ct)
+        public async Task<IActionResult> EditMember(int id,CancellationToken ct)
         {
-            var member= await memberService.EditMemberAsync(memberId, ct);
+            var member= await memberService.EditMemberAsync(id, ct);
             if (member == null){
 
                 TempData["error"] = "Member Not Found";
@@ -100,10 +100,10 @@ namespace GymMangement.PL.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditMember( int memberId,EditMemberViewModel model, CancellationToken ct)
+        public async Task<IActionResult> EditMember([FromRoute] int id,EditMemberViewModel model, CancellationToken ct)
         {
             if (!ModelState.IsValid) return View(model);
-            var result = await memberService.EditMemberDetailsAsync(memberId, model, ct);
+            var result = await memberService.EditMemberDetailsAsync(id, model, ct);
             if (result)
             
                 TempData["Success Message"] = "Member Updated Successfully";

@@ -1,6 +1,25 @@
-﻿@using GymMangement.DAL.Data.Models
-@model IEnumerable<Plan>
+﻿@model IEnumerable<PlanViewModel>
+@{
+    ViewData["Title"] = "Plans";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="Alert" class="alert alert-success alert-dismissible fade show">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div id="Alert" class="alert alert-danger alert-dismissible fade show">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
 
  
     <div class="container">
@@ -46,15 +65,15 @@
                                 <div class="mt-auto">
                                     <div class="d-grid gap-2">
 
-                                        <a href="\Plans\Details\@plan.Id" class="btn btn-outline btn-sm">
+                                            <a asp-controller="Plans" asp-action="Details" asp-route-id="@plan.Id" class="btn btn-outline btn-sm">
                                             <i class="bi bi-eye me-1"></i>View Details
                                         </a>
 
                                         <div class="d-flex gap-2">
-                                            <a href="\Plans\Edit\1" class="btn btn-outline btn-sm flex-fill">
+                                            <a asp-controller="Plans" asp-action="Edit" asp-route-id="@plan.Id" class="btn btn-outline btn-sm flex-fill">
                                                 <i class="bi bi-pencil me-1"></i>Edit
                                             </a>
-                                            <form href="\Plans\Activate\@plan.Id" method="post" class="flex-fill">
+                                            <form asp-controller="Plans" asp-action="Activate" asp-route-id="@plan.Id" method="post" class="flex-fill">
                                                 @* If Plan is Active put class text-danger if not text-success *@
                                                         <button type="submit" class="btn btn-outline btn-sm w-100 @(plan.IsActive ? "text-danger" : "text-success") ">
                                                     @* Display If No Plan is inactive*@
@@ -95,3 +114,6 @@
             </div>
         </main>
     </div>
+@section Scripts {
+    <partial name="_AlertBoxConfirmation.cshtml" />
+}

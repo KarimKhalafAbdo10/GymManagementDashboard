@@ -61,7 +61,7 @@
                             </td>
                             <td><span>@member.Name</span></td>
                             <td><span>@member.Email</span></td>
-                            <td><span>,@member.Email</span></td>
+                            <td><span>@member.Gender</span></td>
                             <td><span>@member.Phone</span></td>
                             <td class="action position-relative">
                                 <div class="dropdown">
@@ -93,7 +93,7 @@
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                                    <a asp-controller="Members" asp-action="EditMember" asp-route-memberId="@member.Id"
+                                                    <a asp-controller="Members" asp-action="EditMember" asp-route-id="@member.Id"
                                                class="dropdown-item d-flex align-items-center gap-3">
                                                 <img src="~/images/edit.jpg" alt="edit icon"
                                                      style="width: 20px; height: 20px;" />
