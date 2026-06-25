@@ -39,11 +39,11 @@ namespace GymMangement.PL.Controllers
             var result = await memberService.CreateMemberAsync(model, ct);
             if (result)
             {
-                TempData["Success"] = "Member Created Successfully";
+                TempData["SuccessMessage"] = "Member Created Successfully";
             }
             else
             {
-                TempData["Error"] = "Member Creation Failed, Email or Phone already exists";
+                TempData["ErrorMessage"] = "Member Creation Failed, Email or Phone already exists";
             }
 
             return RedirectToAction(nameof(Index));
@@ -62,7 +62,7 @@ namespace GymMangement.PL.Controllers
             if (member == null)
             {
 
-                    TempData["Error"] = "Member Not Found";
+                    TempData["ErrorMessage"] = "Member Not Found";
                     return RedirectToAction(nameof(Index));
             }
             return View(member);    
@@ -76,7 +76,7 @@ namespace GymMangement.PL.Controllers
             var healthRecord = await memberService.GetHealthRecordByMemberIdAsync(memberId, ct);
             if (healthRecord == null)
             {
-                TempData["Error"] = "Health Record Not Found";
+                TempData["ErrorMessage"] = "Health Record Not Found";
                 return RedirectToAction(nameof(Index));
             }
             
@@ -93,7 +93,7 @@ namespace GymMangement.PL.Controllers
             var member= await memberService.EditMemberAsync(id, ct);
             if (member == null){
 
-                TempData["error"] = "Member Not Found";
+                TempData["ErrorMessage"] = "Member Not Found";
                 return RedirectToAction(nameof(Index));
         }
             return View(member);
@@ -106,11 +106,11 @@ namespace GymMangement.PL.Controllers
             var result = await memberService.EditMemberDetailsAsync(id, model, ct);
             if (result)
             
-                TempData["Success Message"] = "Member Updated Successfully";
+                TempData["SuccessMessage"] = "Member Updated Successfully";
             
             else
             
-                TempData["error Message"] = "Failed to Update Member";
+                TempData["ErrorMessage"] = "Failed to Update Member";
             
             return RedirectToAction(nameof(Index));
         }

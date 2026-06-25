@@ -8,19 +8,19 @@
     <main role="main" class="pb-3">
 
      
-        @if (TempData["Success"]!=null)
+        @if (TempData["SuccessMessage"]!=null)
         {
             <div id="Alert" class="alert alert-success alert-dismissible fade show">
             <i class="bi bi-check-circle-fill me-2"></i>
-                @TempData["Success"]
+                @TempData["SuccessMessage"]
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
         }
-        else if (TempData["Error"]!=null)
+        else if (TempData["ErrorMessage"]!=null)
         {
             <div id="Alert" class="alert alert-danger alert-dismissible fade show">
             <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                @TempData["Error"]
+                @TempData["ErrorMessage"]
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>}
        

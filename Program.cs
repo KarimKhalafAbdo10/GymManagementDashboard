@@ -1,4 +1,5 @@
 
+using GymMangement.BLL;
 using GymMangement.BLL.Services.Classes;
 using GymMangement.BLL.Services.Interfaces;
 using GymMangement.DAL.Data.DbContexts;
@@ -14,6 +15,7 @@ namespace GemMangement
 {
     public class Program
     {
+        
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -27,7 +29,7 @@ namespace GemMangement
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
             builder.Services.AddScoped<ISessionRepository,SessionRepository>();
             builder.Services.AddScoped<ISessionService,SessionSerivce>();
-
+            builder.Services.AddAutoMapper(m=>m.AddProfile(new MappingProfile()));
 
             builder.Services.AddDbContext<GymDbContext>(Options =>
             {
