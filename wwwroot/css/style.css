@@ -1,5 +1,5 @@
-﻿body {
-    : root
+﻿
+    :root
 
 {
     --primary-color: #070093;
@@ -173,9 +173,9 @@ section.workout {
         section.workout .title h2 {
             font-size: 60px;
             font-weight: 700;
-            background-image: linear-gradient(#070093 45%, #ffffff);
+            background-image: linear-gradient(#070093 45%, #76c8db);
             color: transparent;
-            background-clip: text;
+            background-clip: content-box;
         }
 
     section.workout .card {
@@ -589,4 +589,4 @@ footer .footer-content .location p {
         border-color: var(--primary-color);
         -webkit-text-fill-color: #fff; /* ensures text stays visible on hover */
     }
-}
+

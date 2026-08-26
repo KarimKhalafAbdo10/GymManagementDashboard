@@ -1,21 +1,27 @@
 using System.Diagnostics;
 using GemMangement.Models;
+using GymMangement.BLL.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GemMangement.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IAnalyticsService _analyticsService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,IAnalyticsService analyticsService)
         {
             _logger = logger;
+            _analyticsService = analyticsService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var data = await _analyticsService.GetDataAsync();
+            return View(data);
         }
 
         public IActionResult Privacy()

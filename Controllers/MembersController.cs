@@ -1,20 +1,42 @@
-﻿using GymMangement.BLL.Services.Interfaces;
+﻿using GymMangement.BLL.Services.AttchmentService;
+using GymMangement.BLL.Services.Interfaces;
 using GymMangement.BLL.ViewModels.MemberViewModels;
 using GymMangement.DAL.Data.Models;
 using GymMangement.DAL.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace GymMangement.PL.Controllers
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class MembersController : Controller
     {
         private readonly IMemberService memberService;
+        private readonly IAttachmentService _attachmentService;
 
-        public MembersController(IMemberService memberService)
+        public MembersController(IMemberService memberService, IAttachmentService attachmentService)
         {
             this.memberService = memberService;
+            _attachmentService = attachmentService;
         }
+
+        #region get upload
+        [HttpGet]
+        public async Task<IActionResult> Picture(int id)
+        {
+            var member = await memberService.MemberDetailsAsync(id);
+            if(member is null || string.IsNullOrWhiteSpace(member.Photo))
+            
+                return NotFound();
+
+            var result = _attachmentService.GetFile(member.Photo, "MemberPhoto");
+            if (result == null) return NotFound();
+            return File(result.Value.stream, result.Value.contentType);
+        }
+
+        #endregion
+
 
         #region Get ALL memebers
         public async Task<IActionResult> Index(CancellationToken ct)

@@ -1,10 +1,12 @@
 ﻿using GymMangement.BLL.Services.Classes;
 using GymMangement.BLL.Services.Interfaces;
 using GymMangement.BLL.ViewModels.TrainerViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymMangement.PL.Controllers
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class TrainerController : Controller
     {
         private readonly ITrainerService trainerService;
@@ -32,7 +34,7 @@ namespace GymMangement.PL.Controllers
         {
             if (!ModelState.IsValid) return View(model);
             var result = await trainerService.CreateTrainerAsync(model, ct);
-            if(result)
+            if(result.Success)
             {
                 TempData["SuccessMessage"] = "Trainer created successfully.";
                 return RedirectToAction(nameof(Index));

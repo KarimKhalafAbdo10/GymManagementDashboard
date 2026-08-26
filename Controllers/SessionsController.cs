@@ -2,12 +2,14 @@
 using GymMangement.BLL.Services.Interfaces;
 using GymMangement.BLL.ViewModels.SessionViewModels;
 using GymMangement.DAL.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 
 namespace GymMangement.PL.Controllers
 {
+    [Authorize]
     public class SessionsController : Controller
     {
         private readonly ISessionService sessionService;
