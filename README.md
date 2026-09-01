@@ -3,13 +3,14 @@ A web-based dashboard application designed to streamline gym operations, manage 
 🚀 Features
 📋 Member Management – Add, update, and track gym members.
 
-💳 Subscription Tracking – Manage membership plans, payments, and renewals.
+💳 Subscription Tracking – Manage membership plans, and renewals.
 
 📊 Dashboard Analytics – Visualize active members, revenue, and attendance.
 
 🔐 Authentication & Authorization – Secure login with role-based access.
 
 ⚙️ Admin Controls – Manage staff, gym settings, and system configurations.
+
 🛠️ Tech Stack
 Frontend:  HTML, CSS,Bootstrap,JavaScript
 
